@@ -20,6 +20,10 @@ module Boxing
         @preferences = []
       end
 
+      def length
+        @preferences.length
+      end
+
       def <<(preference)
         add_preference(preference)
       end
