@@ -17,9 +17,7 @@ module Boxing
 
         @input.each_line.with_index do |line, i|
           # Do not consider the header line
-          if i == 0
-            next
-          end
+          next if i == 0
 
           fields = line.split(',', -1).each(&:strip!)
 
