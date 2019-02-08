@@ -1,5 +1,7 @@
 require "bundler/setup"
 require "boxing/kata/boxing_kata"
+require "boxing/kata/preferences"
+require "boxing/kata/input_parser"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
