@@ -1,9 +1,12 @@
 require_relative "constants.rb"
 
+Colors = Boxing::Kata::Constants::Colors
+
 module Boxing
   module Kata
     class Preference
       attr_accessor :id, :name, :brush_color, :primary_insured_id, :contract_effective_date
+      
       def initialize(id, name, brush_color, primary_insured_id, contract_effective_date=nil)
         @id = id
         @name = name
@@ -39,14 +42,17 @@ module Boxing
       
       def color_count
         colors = {}
-        Constants::Colors::AVAILABLE_COLORS.each { |color| colors[color.to_sym] = 0 }
+        Colors::AVAILABLE_COLORS.each { |color| colors[color.to_sym] = 0 }
 
         @preferences.each do |pref|
           colors[pref.brush_color.to_sym] += 1
         end
 
         colors
-      end 
+      end
+
+      def boxes()
+      end
     end
   end
 end
