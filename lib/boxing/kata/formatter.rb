@@ -20,29 +20,64 @@ module Boxing
         "
       end
 
-      def format_starter_boxes(colors)
-        if colors.empty?
-          "NO STARTER BOXES GENERATED"
+      def format_starter_boxes(boxes)
+        if boxes.length == 0
+          return "PLEASE GENERATE STARTER BOXES FIRST"
         end
 
-        boxes = []
-
-        for color in colors.keys.sort
-          box = format_starter_box(color.to_s, colors[color])
-          boxes << box
+        output = ""
+        boxes.each do |box|
+          output << "STARTER BOX\n"
+          output << format_starter_box(box)
+          output << "\n"
         end
-
-        boxes.join("\n\n");
-
-        boxes
+        output
       end
 
-      def format_starter_box(color, count)
-        output = "STARTER BOX\n"
-        output << "#{count*2} #{color} brushes\n"
-        output << "#{count*2} #{color} replacement heads"
+      def format_starter_box(box)
+        output = ""
+        if box.brushes.length > 2
+          if same_color? box 
+            output << "2 " << brush.color << "brushes\n"
+            output << "2 " << brush.color << "replacement heads\n"
+          else
+            box.brushes.each do |item|
+              output << "1 " << brush.color << "brush"
+              output << "1 " << brush.color << "replacement head"
+            end
+          end
+        else
+          output << "1 " << brush.color << "brush\n"
+          output << "1 " << brush.color << "replacement head\n"
+        end
 
-        output
+        if box.paste_kits.length > 1
+          output << "2 paste kits"
+        else 
+          output << "1 paste kit"
+        end
+
+        output << "Schedule: " << box.contract_effective_date
+
+        output << "Mail class: " << box.mail_class
+      end
+
+      def format_refill_box
+        
+      end
+
+      def same_color?(box)
+        color = ""
+
+        box.brushes.each do |brush|
+          if color == ""
+            color = brush.color
+          elsif brush.color != color
+            return false
+          end
+        end
+
+        return true
       end
     end
   end

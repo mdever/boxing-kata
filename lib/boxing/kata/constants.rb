@@ -8,6 +8,17 @@ module Boxing
 
         AVAILABLE_COLORS = [BLUE, GREEN, PINK]
       end
+
+      module BoxTypes
+        STARTER = "STARTER"
+        REPLACEMENT = "REPLACEMENT"
+      end
+
+      module Items
+        BRUSH = "brush"
+        REPLACEMENT_HEAD = "replacement_head"
+        PASTE = "paste"
+      end
     end
   end
 end
