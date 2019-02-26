@@ -18,7 +18,8 @@ module Boxing
         @input.each_line.with_index do |line, i|
           # Do not consider the header line
           next if i == 0
-
+          next if line == "\n"
+          
           fields = line.split(',', -1).each(&:strip!)
 
           validate(fields, i+1) # First line is headers
