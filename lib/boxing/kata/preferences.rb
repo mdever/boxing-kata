@@ -7,7 +7,7 @@ module Boxing
   module Kata
     class Preference
       attr_accessor :id, :name, :brush_color, :primary_insured_id, :contract_effective_date
-      
+
       def initialize(id, name, brush_color, primary_insured_id, contract_effective_date=nil)
         @id = id
         @name = name
@@ -39,11 +39,9 @@ module Boxing
 
       def contract_effective_date
         if @contract_effective_date == nil
-          @preferences.find do |pref|
-            if pref.contract_effective_date != nil
-              @contract_effective_date = pref.contract_effective_date
-            end
-          end
+          pni = @preferences.find { |pref| pref.contract_effective_date != nil }
+
+          @contract_effective_date = pni.contract_effective_date
         end
 
         @contract_effective_date
@@ -67,7 +65,7 @@ module Boxing
 
       def starter_boxes
         boxes = []
-        eff_date = self.contract_effective_date
+        eff_date = self.contract_effective_date()
         current_box = StarterBox.new(eff_date)
         @preferences.each do |pref|
           current_box.add_brush(Brush.new(pref.brush_color))
@@ -85,7 +83,7 @@ module Boxing
         end
       end
 
-      def replacement_boxes
+      def refill_boxes
         boxes = []
         eff_date = self.contract_effective_date
         current_box = RefillBox.new(eff_date)

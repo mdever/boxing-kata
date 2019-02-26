@@ -32,7 +32,7 @@ module Boxing
             throw ParseError.new("Invalid number of fields in line #{i}: #{line}")
           end
 
-          pref = Preference.new(fields[0], fields[1], fields[2], fields[3], fields[4].empty? ? nil : fields[5])   
+          pref = Preference.new(fields[0], fields[1], fields[2], fields[3], fields[4].empty? ? nil : Date.parse(fields[4]))   
           @prefs << pref
         end
 

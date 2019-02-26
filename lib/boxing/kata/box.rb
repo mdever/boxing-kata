@@ -8,13 +8,13 @@ Colors  = Boxing::Kata::Constants::Colors
 module Boxing
   module Kata
     class Box
-      attr_accessor :type, :brushes, :replacement_heads, :contract_effective_date
+      attr_accessor :type, :brushes, :replacement_heads, :contract_effective_date, :paste_kits
 
       def initialize(type, contract_effective_date)
         @type = type
         @brushes = []
         @replacement_heads = []
-        @paste_tubes = []
+        @paste_kits = []
         @contract_effective_date = contract_effective_date
         @weight = 0
       end
@@ -30,7 +30,7 @@ module Boxing
       end
 
       def add_paste(paste)
-        @paste_tubes << paste
+        @paste_kits << paste
         @weight += paste.weight
       end
 
@@ -40,6 +40,17 @@ module Boxing
         else
           @shipping_priority = "first"
         end
+      end
+
+      def replacement_heads_of_color(color)
+        count = 0
+        @replacement_heads.each do |head|
+          if head.color == color
+            count += 1
+          end
+        end
+
+        count
       end
     end
   end
@@ -92,6 +103,14 @@ module Boxing
     def initialize(color)
       super(Items::REPLACEMENT_HEAD, 1)
       @color = color
+    end
+
+    def self.pluralize(amount)
+      if amount == 1
+        "replacement head"
+      else
+        "replacement heads"
+      end
     end
   end
 
