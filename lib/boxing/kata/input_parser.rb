@@ -21,7 +21,7 @@ module Boxing
 
           fields = line.split(',', -1).each(&:strip!)
 
-          validate(fields, i)
+          validate(fields, i+1) # First line is headers
 
           # Based on the way we're splitting and the trailing 
           # comma in the input, we can get an extra "field" at the end.

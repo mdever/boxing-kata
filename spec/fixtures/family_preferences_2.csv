@@ -1,0 +1,8 @@
+id,name,brush_color,primary_insured_id,contract_effective_date
+1,Fry,blue,,2018-03-29
+2,Leela,pink,1,,
+3,Zoidberg,blue,1,,
+4,Bender,green,1,,
+5,Professor,green,1,,
+6,Amy,pink,1,,
+7,Hermes,green,1,,

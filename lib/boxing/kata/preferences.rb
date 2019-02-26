@@ -81,6 +81,8 @@ module Boxing
           current_box.add_paste(Paste.new)
           boxes << current_box
         end
+
+        boxes
       end
 
       def refill_boxes
@@ -100,6 +102,8 @@ module Boxing
           current_box.add_paste(Paste.new)
           boxes << current_box
         end
+
+        boxes
       end
     end
   end

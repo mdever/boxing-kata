@@ -68,12 +68,16 @@ module Boxing
 
     def refill_dates
       schedule = []
-      i = 3
-      ((12 - contract_effective_date.month)/3).times do 
-        schedule << (contract_effective_date >> i)
-        i += 3
-      end
-      
+      i = 1
+
+      while true
+        next_date = contract_effective_date + (90*i)
+        if next_date.year != contract_effective_date.year
+          break
+        end
+        schedule << next_date
+        i += 1
+      end     
 
       schedule
     end
