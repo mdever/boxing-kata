@@ -21,7 +21,7 @@ module Boxing
 
       preferences = CSVInputParser.new(File.open(filename)).parse
 
-      puts "Preferences loaded correctly\n" if preferences != nil
+      puts "\nPreferences loaded correctly!\n\n" if preferences != nil
 
       formatter = BoxingFormatter.new(preferences)
 
@@ -36,16 +36,16 @@ module Boxing
 
       while true
         puts "Please select what you would like to do:"
-        puts "1. Colors"
-        puts "2. Starter Box"
-        puts "3. Refill Box"
-        puts "4. Exit"
+        puts "  1. Colors"
+        puts "  2. Starter Box"
+        puts "  3. Refill Box"
+        puts "  4. Exit"
 
         choice = STDIN.gets.chomp
 
         routine = options[choice]
         if routine == nil
-          puts "Please select a number between 1 and 4"
+          puts "  \nPlease select a number between 1 and 4!\n\n"
           next
         end
 

@@ -1,9 +1,9 @@
 require "boxing/kata/constants"
 require "Date"
 
-BoxTypes = Boxing::Kata::Constants::BoxTypes
-Items   = Boxing::Kata::Constants::Items
-Colors  = Boxing::Kata::Constants::Colors
+BoxTypes ||= Boxing::Kata::Constants::BoxTypes
+Items    ||= Boxing::Kata::Constants::Items
+Colors   ||= Boxing::Kata::Constants::Colors
 
 module Boxing
   module Kata

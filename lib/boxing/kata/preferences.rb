@@ -1,7 +1,7 @@
 require_relative "constants.rb"
 require "boxing/kata/box"
 
-Colors = Boxing::Kata::Constants::Colors
+Colors ||= Boxing::Kata::Constants::Colors
 
 module Boxing
   module Kata

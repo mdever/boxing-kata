@@ -1,7 +1,7 @@
 require "boxing/kata/preferences"
 require "boxing/kata/constants"
 
-Colors = Boxing::Kata::Constants::Colors
+Colors ||= Boxing::Kata::Constants::Colors
 
 module Boxing
   module Kata

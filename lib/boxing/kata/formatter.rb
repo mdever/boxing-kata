@@ -1,8 +1,8 @@
 require "boxing/kata/preferences"
 require "boxing/kata/constants"
 
-Colors   = Boxing::Kata::Constants::Colors
-BoxTypes = Boxing::Kata::Constants::BoxTypes
+Colors   ||= Boxing::Kata::Constants::Colors
+BoxTypes ||= Boxing::Kata::Constants::BoxTypes
 
 module Boxing
   module Kata
