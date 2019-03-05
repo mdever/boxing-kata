@@ -1,5 +1,10 @@
-require_relative "constants.rb"
+require "boxing/kata/constants"
 require "boxing/kata/box"
+require "boxing/kata/starter_box"
+require "boxing/kata/refill_box"
+require "boxing/kata/brush"
+require "boxing/kata/paste"
+require "boxing/kata/replacement_head"
 
 Colors ||= Boxing::Kata::Constants::Colors
 
@@ -54,6 +59,7 @@ module Boxing
       
       def color_count
         colors = {}
+
         Colors::AVAILABLE_COLORS.each { |color| colors[color.to_sym] = 0 }
 
         @preferences.each do |pref|

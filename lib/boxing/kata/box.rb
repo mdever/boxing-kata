@@ -8,7 +8,7 @@ Colors   ||= Boxing::Kata::Constants::Colors
 module Boxing
   module Kata
     class Box
-      attr_accessor :type, :brushes, :replacement_heads, :contract_effective_date, :paste_kits
+      attr_accessor :type, :brushes, :replacement_heads, :contract_effective_date, :paste_kits, :weight
 
       def initialize(type, contract_effective_date)
         @type = type
@@ -52,77 +52,6 @@ module Boxing
 
         count
       end
-    end
-  end
-
-  class StarterBox < Boxing::Kata::Box
-    def initialize(contract_effective_date)
-      super(BoxTypes::STARTER, contract_effective_date)
-    end
-  end
-
-  class RefillBox < Boxing::Kata::Box
-    def initialize(contract_effective_date)
-      super(BoxTypes::REPLACEMENT, contract_effective_date)
-    end
-
-    def refill_dates
-      schedule = []
-      i = 1
-
-      while true
-        next_date = contract_effective_date + (90*i)
-        if next_date.year != contract_effective_date.year
-          break
-        end
-        schedule << next_date
-        i += 1
-      end     
-
-      schedule
-    end
-  end
-
-  class Item
-    attr_accessor :type, :weight
-
-    def initialize(type, weight)
-      @type = type
-      @weight = weight
-    end
-  end
-
-  class Brush < Item
-    attr_accessor :color
-
-    def initialize(color)
-      super(Items::BRUSH, 9)
-      @color = color      
-    end
-  end
-
-  class ReplacementHead < Item
-    attr_accessor :color
-
-    def initialize(color)
-      super(Items::REPLACEMENT_HEAD, 1)
-      @color = color
-    end
-
-    def self.pluralize(amount)
-      if amount == 1
-        "replacement head"
-      else
-        "replacement heads"
-      end
-    end
-  end
-
-  class Paste < Item
-    attr_accessor :color
-
-    def initialize
-      super(Items::PASTE, 7.6)
     end
   end
 end

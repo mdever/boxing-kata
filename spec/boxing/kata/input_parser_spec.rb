@@ -1,6 +1,6 @@
 require "spec_helper"
 
-Colors = Boxing::Kata::Constants::Colors
+Colors ||= Boxing::Kata::Constants::Colors
 
 sample_file = "id,name,brush_color,primary_insured_id,contract_effective_date
 2,Anakin,blue,,2018-01-01
@@ -18,7 +18,6 @@ invalid_file = "id,name,brush_color,primary_insured_id,contract_effective_date
 
 describe Boxing::Kata::CSVInputParser do
 
-  
   it "should read in the contents given an IO like object" do
     input_stream = StringIO.new(sample_file)
     parser = Boxing::Kata::CSVInputParser.new(input_stream)

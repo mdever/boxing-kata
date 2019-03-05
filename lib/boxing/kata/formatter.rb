@@ -116,9 +116,9 @@ BRUSH PREFERENCES
 
         output << "Schedule: " 
         
-        box.refill_dates.each_with_index do |date, i| 
+        box.refill_dates.each_with_index do |date, idx| 
           output << date.to_s
-          if i != box.refill_dates.length - 1
+          if idx != box.refill_dates.length - 1
             output << ", "
           end
         end

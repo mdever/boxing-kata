@@ -7,6 +7,8 @@ module Boxing
     def self.report
       unless has_input_file?
         puts "Usage: ruby ./bin/boxing-kata <spec/fixtures/family_preferences.csv"
+        puts "Exiting"
+        exit(1)
       end
 
       do_main
@@ -34,7 +36,7 @@ module Boxing
 
 
 
-      while true
+      loop do
         puts "Please select what you would like to do:"
         puts "  1. Colors"
         puts "  2. Starter Box"
